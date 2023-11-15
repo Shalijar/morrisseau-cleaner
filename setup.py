@@ -1,4 +1,5 @@
 import setuptools
+import versioneer
 
 with open("README.rst", "r") as fh:
     long_description = fh.read()
@@ -7,7 +8,8 @@ with open("requirements.txt", "r") as fh:
 
 setuptools.setup(
     name="morriseau-cleaner",
-    version="0.0.1",
+    version=versioneer.get_version(),
+    cmdclass=versioneer.get_cmdclass(),
     author="Ali Shajari",
     author_email="ali0shajari@gmail.com",
     description="A Python library to clean data for Morrisseau Project",
