@@ -18,7 +18,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     entry_points={
         'console_scripts': [
-            'morrisseau-cleaner = morrisseau_cleaner.morrisseau_cleaner:main',
+            'morrisseau-cleaner=morrisseau_cleaner.morrisseau_cleaner:main',
         ],
     },
     classifiers=[
