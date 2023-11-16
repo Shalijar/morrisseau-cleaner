@@ -1,4 +1,4 @@
-from askii_art import askii_art_main
+from .askii_art import askii_art_main
 
 def display_menu():
     print("Welcome to the Morrisseau Project Cleaner Module!")

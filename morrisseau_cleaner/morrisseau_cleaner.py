@@ -1,4 +1,4 @@
-from terminal import terminal_main
+from .terminal import terminal_main
 
 
 def main():
