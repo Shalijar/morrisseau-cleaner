@@ -80,4 +80,3 @@ def terminal():
             break
         else:
             print("Error: command not recognized!")
-
