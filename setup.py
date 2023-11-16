@@ -16,6 +16,11 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/x-rst",
     packages=setuptools.find_packages(),
+    entry_points={
+        'console_scripts': [
+            'morrisseau-cleaner = morrisseau_cleaner.morrisseau_cleaner:main',
+        ],
+    },
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
