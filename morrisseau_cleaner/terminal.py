@@ -1,6 +1,5 @@
 import functions as f
 import askii_art as aa
-import datetime
 
 def help_menu() -> None:
     print("Available commands:")

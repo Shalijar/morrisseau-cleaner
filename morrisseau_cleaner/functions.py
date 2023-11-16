@@ -14,3 +14,6 @@ def highlight_changes(old_str, new_str):
     print(f"-: {old_str.replace(' ', '␣')} -> {new_str.replace(' ', '␣')} +: {highlighted_str}")
 
 
+old = "this is a test  "
+new = "tHis Is a test"
+highlight_changes(old, new)
