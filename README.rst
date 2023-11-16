@@ -7,3 +7,4 @@ Installation
 ------------
 
 You can install morrisseau-cleaner using pip:
+pip install morrisseau-cleaner

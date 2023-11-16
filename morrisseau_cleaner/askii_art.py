@@ -4,7 +4,7 @@ import pyfiglet
 import termcolor
 import colorama
 
-def askii_art():
+def askii_art_main():
     colorama.init()
     art = pyfiglet.figlet_format('Morrisseau Project')
     colored_art = termcolor.colored(art, color='magenta')

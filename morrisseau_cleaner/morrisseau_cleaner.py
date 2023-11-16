@@ -1,8 +1,8 @@
-import morrisseau_cleaner.terminal as t
+from terminal import terminal_main
 
 
 def main():
-    t.terminal()
+    terminal_main()
 
 if __name__ == "__main__":
     main()
