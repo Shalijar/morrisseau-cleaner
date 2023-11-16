@@ -1,6 +1,5 @@
-import functions as f
-import askii_art as aa
-import datetime
+import morrisseau_cleaner.functions as f
+import morrisseau_cleaner.askii_art as aa
 
 def help_menu() -> None:
     print("Available commands:")

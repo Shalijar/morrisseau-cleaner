@@ -1,9 +1,5 @@
-import terminal as t
+import morrisseau_cleaner.terminal as t
 
-
-### Global variables ###
-log_file = 'change_log.txt'
-input_file = 'input.csv'
 
 def main():
     t.terminal()
