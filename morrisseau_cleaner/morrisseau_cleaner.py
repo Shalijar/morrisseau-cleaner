@@ -1,5 +1,4 @@
-import terminal as t
-
+from . import terminal as t
 
 ### Global variables ###
 log_file = 'change_log.txt'

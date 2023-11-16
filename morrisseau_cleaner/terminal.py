@@ -1,5 +1,5 @@
-import functions as f
-import askii_art as aa
+from . import function as f 
+from . import askii_art as aa
 
 def help_menu() -> None:
     print("Available commands:")
