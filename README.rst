@@ -1,4 +1,3 @@
 morrisseau-cleaner
-=========
-
-A Python library to clean dat for Morrisseau Project
+------------------
+A Python library to clean data for Morrisseau Project
