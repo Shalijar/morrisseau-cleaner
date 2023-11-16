@@ -1,5 +1,5 @@
-from . import function as f 
-from . import askii_art as aa
+
+
 
 def help_menu() -> None:
     print("Available commands:")
@@ -21,6 +21,8 @@ def display_menu():
     print("  exit - Exit the program")
 
 def terminal():
+    from . import askii_art as aa
+    from . import function as f 
     aa.askii_art()
     display_menu()
     # f.write_to_log("###############################\n")
