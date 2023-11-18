@@ -12,4 +12,11 @@ Installation
 
 .. code-block:: bash
 
-   pip install is-number
+   pip install morrisseau-cleaner
+
+Upgrade
+-------
+
+.. code-block:: bash
+
+   pip install --upgrade morrisseau-cleaner
