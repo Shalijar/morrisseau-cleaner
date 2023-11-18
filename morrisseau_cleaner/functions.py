@@ -51,9 +51,11 @@ def clean_spaces(input_file: str, output_file: str) -> None:
             for row in reader:
                 new_row = []
                 for cell in row:
-                    cell = cell.strip()
-                    cell = re.sub(' +', ' ', cell)
-                    new_row.append(cell)
+                    original_cell = cell
+                    new_cell = cell.strip()
+                    new_cell = re.sub(' +', ' ', new_cell)
+                    new_row.append(new_cell)
+                    highlight_changes(original_cell, new_cell)
                 writer.writerow(new_row)
 
 
@@ -65,8 +67,10 @@ def clean_pipes(input_file: str, output_file: str) -> None:
             for row in reader:
                 new_row = []
                 for cell in row:
-                    cell = cell.replace(' |', '|').replace('| ', '|')
+                    original_cell = cell
+                    new_cell = new_cell.replace(' |', '|').replace('| ', '|')
                     new_row.append(cell)
+                    highlight_changes(original_cell, new_cell)
                 writer.writerow(new_row)
 
 
