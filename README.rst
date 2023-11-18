@@ -1,10 +1,15 @@
 morrisseau-cleaner
 ==================
 
+.. image:: https://img.shields.io/pypi/v/morrisseau-cleaner
+   :target: https://pypi.org/project/morrisseau-cleaner/
+   :alt: PyPI - Version
+
 A Python library to clean data for the Morrisseau Project
 
 Installation
 ------------
 
-You can install morrisseau-cleaner using pip:
-pip install morrisseau-cleaner
+.. code-block:: bash
+
+   pip install is-number
