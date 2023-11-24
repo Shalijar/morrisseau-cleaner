@@ -136,6 +136,138 @@ def clean_dates(input_file: str, output_file: str) -> None:
                         new_row.append(cell)
             writer.writerow(new_row)
     print("Those dates do be looking clean. Nice job!")
+
+def clean_titles(input_file: str, output_file: str) -> None:
+    title_column_index = get_column_index("title")
+    articles = [
+        "a",
+        "abaft",
+        "aboard",
+        "about",
+        "above",
+        "absent",
+        "across",
+        "afore",
+        "after",
+        "against",
+        "along",
+        "alongside",
+        "amid",
+        "amidst",
+        "among",
+        "amongst",
+        "an",
+        "anenst",
+        "apropos",
+        "apud",
+        "around",
+        "as",
+        "aside",
+        "astride",
+        "at",
+        "athwart",
+        "atop",
+        "barring",
+        "before",
+        "behind",
+        "below",
+        "beneath",
+        "beside",
+        "besides",
+        "between",
+        "beyond",
+        "but",
+        "by",
+        "circa",
+        "concerning",
+        "despite",
+        "down",
+        "during",
+        "except",
+        "excluding",
+        "failing",
+        "following",
+        "for",
+        "forenenst",
+        "from",
+        "given",
+        "in",
+        "including",
+        "inside",
+        "into",
+        "lest",
+        "like",
+        "mid",
+        "midst",
+        "minus",
+        "modulo",
+        "near",
+        "next",
+        "notwithstanding",
+        "of",
+        "off",
+        "on",
+        "onto",
+        "opposite",
+        "out",
+        "outside",
+        "over",
+        "pace",
+        "past",
+        "per",
+        "plus",
+        "pro",
+        "qua",
+        "regarding",
+        "round",
+        "sans",
+        "save",
+        "since",
+        "than",
+        "the",
+        "through",
+        "throughout",
+        "till",
+        "times",
+        "to",
+        "toward",
+        "towards",
+        "under",
+        "underneath",
+        "unlike",
+        "until",
+        "unto",
+        "up",
+        "upon",
+        "versus",
+        "via",
+        "vice",
+        "with",
+        "within",
+        "without",
+        "worth"
+    ]
+    with open(input_file, 'r') as input_csv:
+        with open(output_file, 'w') as output_csv:
+            reader = csv.reader(input_csv)
+            writer = csv.writer(output_csv)
+            for row_index, row in enumerate(reader):
+                new_row = []
+                for cell_index, cell in enumerate(row):
+                    if cell_index == title_column_index:
+                        original_cell = cell
+                        new_cell = cell.strip()
+                        for word_index, word in enumerate(new_cell.split()):
+                            if word_index == 0 or word not in articles:
+                                new_cell = new_cell.replace(word, word.capitalize())
+                            else :
+                                new_cell = new_cell.replace(word, word.lower())
+                        if new_cell != original_cell:
+                            highlight_changes(original_cell, new_cell)
+                        new_row.append(new_cell)
+        print("Titles are now capitalized.")
+
+
                                         
                                     
                                     
