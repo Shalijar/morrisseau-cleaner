@@ -267,6 +267,37 @@ def clean_titles(input_file: str, output_file: str) -> None:
                         new_row.append(new_cell)
         print("Titles are now capitalized.")
 
+def clean_pages(input_file: str, output_file: str) -> None: 
+    page_column_index = get_column_index("page")
+    with open(input_file, 'r') as input_csv:
+        with open(output_file, 'w') as output_csv:
+            reader = csv.reader(input_csv)
+            writer = csv.reader(output_csv)
+            for row_index, row in enumerate(reader):
+                new_row = []
+                for cell_index, cell in enumerate(row):
+                    if cell_index == page_column_index:
+                        original_cell = cell
+                        new_cell = cell.strip()
+                        # Use a regular expression to extract the page number format
+                        page_number_pattern_match = re.search(r'(\d+)(?:\s*-\s*(\d+))?', new_cell)
+                       
+                        if page_number_pattern_match:
+                           # Reconstruct the cell with cleaned page number format
+                            start_page, end_page = page_number_pattern_match.groups()
+                            if end_page:
+                                cell = f"{start_page}-{end_page}"
+                            else:
+                                cell = start_page
+                    if cell != original_cell:
+                        highlight_changes(original_cell, cell)
+                    new_row.append(new_cell)
+                writer.writerow(new_row)
+    print("Pages are now clean.")
+
+
+    
+
 
                                         
                                     
