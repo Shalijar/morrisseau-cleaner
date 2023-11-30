@@ -121,8 +121,8 @@ def clean_dates(input_file: str, output_file: str) -> None:
                         for pattern, conversion in known_formats.items():
                             if re.fullmatch(pattern, cell):
                                 if conversion or pattern == None:
-                                    print(f"I've found a value that I don't know how to handle. The cell is 
-                                          in positions {row_index}, {cell_index}. the cell is {cell}.")
+                                    print(f"I've found a value that I don't know how to handle. The cell is " 
+                                          f"in positions {row_index}, {cell_index}. the cell is {cell}.")
                                     if input("Would you like to change this manually? (y/n): ").lower() == "y":
                                         cell = input("Enter the new value: ").strip()
                                     else :
