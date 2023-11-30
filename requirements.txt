@@ -29,4 +29,10 @@ tk==0.1
 tornado==6.4
 truststore==0.8.0
 urllib3_secure_extra==0.1.0
-
+certifi==2021.5.30
+chardet==4.0.0
+jinja2==3.0.1
+markupsafe==2.0.1
+pillow==9.4.0
+requests==2.25.1
+urllib3==1.26.6
