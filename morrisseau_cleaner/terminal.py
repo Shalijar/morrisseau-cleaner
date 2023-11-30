@@ -23,7 +23,8 @@ def terminal_main():
 
     while True:
         command = input("Enter a command: ").lower()
-
+        input_file = None 
+        output_file = None
         if command == "choose a file":
             input_file = functions.get_file_path()
             output_file = functions.get_output_file_path(input_file)
