@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import filedialog
 import re
 import csv
-import datetime
+from datetime import datetime
 
 def highlight_changes(old_str, new_str) -> None:
     highlighted_str = ""
@@ -76,66 +76,52 @@ def clean_pipes(input_file: str, output_file: str) -> None:
                 new_row = []
                 for cell in row:
                     original_cell = cell
-                    new_cell = new_cell.replace(' |', '|').replace('| ', '|')
-                    new_row.append(cell)
+                    new_cell = original_cell.replace(' |', '|').replace('| ', '|')
+                    new_row.append(new_cell)
                     highlight_changes(original_cell, new_cell)
                 writer.writerow(new_row)
 
 def clean_dates(input_file: str, output_file: str) -> None:
-    date_column_index = get_column_index("date")
-    known_formats = {
-        r'\d{4}-\d{2}-\d{2}': '%Y-%m-%d',  # YYYY-MM-DD is a correct format
-        r'\d{4}-\d{2}': '%Y-%m',  # YYYY-MM is a correct format 
-        r'\d{4}-\d{4}': 'YYYY-YYYY',  # YYYY-YYYY is a correct format
-        r'\d{4}': '%Y',  # YYYY is a correct format
-        r'c\.(\s+)?\d{4}(\s+)?(-|to|–)(\s+)?c\.(\s+)?\d{4}\b': 'c. YYYY-c. YYYY',  # Matches various formats indicating a range c. YYYY-c. YYYY
-        r'c\.(\s+)?\d{4}\b': 'c. %Y',
-        r'\b(not\s+known|unknown|not\s+sure|uncertain|unspecified|unidentifiable|n(\.|a)|N(\.|a)|Nan|NAN)\b': 'n.d.',  # Matches various representations implying "not known" or "unknown" to n.d.
-        r'\b(\d{1,2}[./-]\d{1,2}[./-]\d{4}|\d{1,2}[./-]\d{2}[./-]\d{2}|\d{4}[./-]\d{2}[./-]\d{2})\b': '%Y-%m-%d', 
-        # DD-MM-YYYY or MM-DD-YYYY: Matches date formats like 01-01-2023 or 12-31-2023.
-        # MM/DD/YYYY or DD/MM/YYYY: Matches formats like 01/01/2023 or 12/31/2023.
-        # M/D/YY or D-M-YY: Matches formats like 1/1/23 or 31-12-23.
-        # YY/MM/DD or YY-MM-DD: Matches formats like 23/01/01 or 23-12-31.
+    # date_column_index = get_column_index("date")
+    # known_formats = {
+    #     r'\d{4}-\d{2}-\d{2}': None,  # YYYY-MM-DD is a correct format
+    #     r'\d{4}-\d{2}': None,  # YYYY-MM is a correct format 
+    #     r'\d{4}-\d{4}': None,  # YYYY-YYYY is a correct format
+    #     r'\d{4}': None,  # YYYY is a correct format
 
-        r'\d{2}\.\d{2}\.\d{4}': '%Y-%m-%d',  # Matches MM.DD.YYYY, change to YYYY-MM-DD
-        r'\d{4}\.\d{2}\.\d{2}': '%Y-%m-%d',  # Matches YYYY.MM.DD, change to YYYY-MM-DD
-        r'\d{2}\.\d{2}\.\d{2}': '%Y-%m-%d',  # Matches MM.DD.YY, change to YYYY-MM-DD
-        r'\d{1,2}-\d{1,2}-\d{2}': '%Y-%m-%d',  # Matches D-M-YY, change to YYYY-MM-DD
-        r'\d{1,2}\.\d{1,2}\.\d{2}': '%Y-%m-%d',  # Matches D.M.YY, change to YYYY-MM-DD
-        r'\d{1,2}/\d{1,2}/\d{2}': '%Y-%m-%d',  # Matches M/D/YY, change to YYYY-MM-DD
-        r'\d{4}-\d{2}': '%Y-%m',  # YYYY-MM
-        r'\d{2}/\d{4}': '%Y-%m',  # Matches MM/YYYY, change to YYYY-MM
-        r'\d{4}/\d{2}': '%Y-%m',  # Matches YYYY/MM, change to YYYY-MM
-        r'\d{2}/\d{2}/\d{2}': '%Y-%m-%d',  # Matches MM/DD/YY, change to YYYY-MM-DD
-    }
+        
+    # }
 
-    with open(input_file, 'r') as input_csv:
-        with open(output_file, 'w') as output_csv:
-            reader = csv.reader(input_csv)
-            writer = csv.writer(output_csv)
-            for row_index, row in enumerate(reader):
-                new_row = []
-                for cell_index, cell in enumerate(row):
-                    if cell_index == date_column_index:
-                        original_cell = cell
-                        for pattern, conversion in known_formats.items():
-                            if re.fullmatch(pattern, cell):
-                                if conversion or pattern == None:
-                                    print(f"I've found a value that I don't know how to handle. The cell is " 
-                                          f"in positions {row_index}, {cell_index}. the cell is {cell}.")
-                                    if input("Would you like to change this manually? (y/n): ").lower() == "y":
-                                        cell = input("Enter the new value: ").strip()
-                                    else :
-                                        print("I'll keep the original value.")
-                                        cell = original_cell
-                                else:
-                                    cell = datetime.strptime(cell, conversion).strftime(conversion)
-                                    break
-                        if cell != original_cell:
-                            highlight_changes(original_cell, cell)
-                        new_row.append(cell)
-            writer.writerow(new_row)
-    print("Those dates do be looking clean. Nice job!")
+    # with open(input_file, 'r') as input_csv:
+    #     with open(output_file, 'w') as output_csv:
+    #         reader = csv.reader(input_csv)
+    #         writer = csv.writer(output_csv)
+    #         for row_index, row in enumerate(reader):
+    #             new_row = []
+    #             for cell_index, cell in enumerate(row):
+    #                 if cell_index == date_column_index:
+    #                     original_cell = cell
+    #                     found_match = False
+    #                     for pattern, conversion in known_formats.items():
+    #                         if re.fullmatch(pattern, cell):
+    #                             if conversion is not None:
+    #                                 cell = datetime.strptime(cell, conversion).strftime(conversion)
+    #                             found_match = True
+    #                             break
+    #                     if not found_match:
+    #                         print(f"I've found a value that I don't know how to handle. The cell is " 
+    #                             f"in positions {row_index+1}, {cell_index+1}. the cell is {cell}")
+    #                         if input("Would you like to change this manually? (y/n): ").lower() == "y":
+    #                             cell = input("Enter the new value: ").strip()
+    #                         else:
+    #                             print("I'll keep the original value.")
+    #                             cell = original_cell
+    #                     else:
+    #                         highlight_changes(original_cell, cell)
+    #                     new_row.append(cell)
+    #             writer.writerow(new_row)
+    # print("Those dates do be looking clean. Nice job!")
+    pass
 
 def clean_titles(input_file: str, output_file: str) -> None:
     title_column_index = get_column_index("title")
