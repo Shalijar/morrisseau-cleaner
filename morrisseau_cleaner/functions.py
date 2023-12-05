@@ -1,6 +1,6 @@
 import tkinter as tk
+from tkinter import filedialog
 import sys
-from PyQt5.QtWidgets import QApplication, QFileDialog
 import re
 import csv
 from datetime import datetime
@@ -21,17 +21,10 @@ def highlight_changes(old_str, new_str) -> None:
     print(f"-: {old_str.replace(' ', '␣')} -> {new_str.replace(' ', '␣')} +: {highlighted_str}")
 
 def get_file_path() -> str:
-    app = QApplication(sys.argv)
-
-    options = QFileDialog.Options()
-    file_path, _ = QFileDialog.getOpenFileName(
-        None, "Select File", "", "All Files (*);;Text Files (*.txt)", options=options
-    )
-
-    if file_path:
-        return file_path
-    else:
-        return None
+    root = tk.Tk()
+    root.withdraw()
+    file_path = filedialog.askopenfilename()
+    return file_path
 
 
 def get_output_file_path(input_file: str) -> str:

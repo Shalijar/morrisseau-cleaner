@@ -1,4 +1,4 @@
-#!/Users/ali/Documents/Carleton/Morrisseau/morrisseau-cleaner/morrisseau-venv/bin/python3.12
+#!/Users/ali/Documents/Carleton/Morrisseau/morrisseau-cleaner/morrisseau-venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
