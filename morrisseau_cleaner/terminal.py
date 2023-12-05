@@ -2,7 +2,7 @@ from .askii_art import askii_art_main
 from morrisseau_cleaner import functions
 
 def display_menu():
-    """Display the menu of options for the user."""
+    """Display the menu of options for the user"""
 
     print("Welcome to the Morrisseau Project Cleaner Module!")
     print("  choose a file - Choose input and output files")
