@@ -15,6 +15,7 @@ setuptools.setup(
     description="A Python library to clean data for Morrisseau Project",
     long_description=long_description,
     long_description_content_type="text/x-rst",
+    use_scm_version=True,
     packages=setuptools.find_packages(exclude=['morrisseau-venv']),
     install_requires=requirements,
 
