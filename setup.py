@@ -16,7 +16,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/x-rst",
     use_scm_version=True,
-    packages=setuptools.find_packages(exclude=['morrisseau-venv']),
+    packages=setuptools.find_packages(),
     install_requires=requirements,
 
     entry_points={
