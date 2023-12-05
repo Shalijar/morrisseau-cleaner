@@ -5,3 +5,4 @@ graft morrisseau_cleaner
 recursive-exclude * *.py[co]
 include versioneer.py
 include morrisseau_cleaner/_version.py
+exclude morrisseau-venv/
